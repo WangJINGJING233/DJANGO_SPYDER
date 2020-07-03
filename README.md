@@ -1,12 +1,47 @@
 - 修改数据库配置
 
   1. settings.py
+  ```python
+  DATABASES = {
+    'default': {
+        # 数据引擎
+        'ENGINE': 'django.db.backends.mysql',
+        # 数据库名字
+        'NAME': 'db_weibo',
+        # 链接数据库的用户名
+        'USER': 'root',
+        # 链接数据库的密码
+        'PASSWORD': 'root',
+        # 数据库的主机地址
+        'HOST': 'localhost',
+        # 数据库的端口号
+        'PORT': '3306'
+    }
+}
 
-  ![](https://raw.githubusercontent.com/WangJINGJING233/DJANGO_SPYDER/master/images/settings.png)
+  ```
 
   2. spyder.py
+  
+   ```python
+       _user_mysql_config = {
+        'host': 'localhost',
+        'port': 3306,
+        'user': 'root',
+        'password': 'root',
+        'database': 'db_weibo',
+        'charset': 'utf8mb4'
+    }
+    _weibo_mysql_config = {
+        'host': 'localhost',
+        'port': 3306,
+        'user': 'root',
+        'password': 'root',
+        'database': 'db_weibo',
+        'charset': 'utf8mb4'
+    }
+     ```
 
-  ![](https://raw.githubusercontent.com/WangJINGJING233/DJANGO_SPYDER/master/images/spyder.png)
 
 - 数据库建库、建表
 
