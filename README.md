@@ -64,7 +64,7 @@
   2. /form_view
 
   ![](https://raw.githubusercontent.com/WangJINGJING233/DJANGO_SPYDER/master/images/main.png)
-  ![](https://raw.githubusercontent.com/WangJINGJING233/DJANGO_SPYDER/master/images/form_view.png)
+
 
 - 如何获取user_id和screen_name
 
