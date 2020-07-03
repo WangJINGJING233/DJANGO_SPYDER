@@ -2,11 +2,11 @@
 
   1. settings.py
 
-  ![image-20200703120508270](https://raw.githubusercontent.com/WangJINGJING233/DJANGO_SPYDER/master/images/settings.png)
+  ![](https://raw.githubusercontent.com/WangJINGJING233/DJANGO_SPYDER/master/images/settings.png)
 
   2. spyder.py
 
-  ![image-20200703120723798](C:\Users\51181\AppData\Roaming\Typora\typora-user-images\image-20200703120723798.png)
+  ![](https://raw.githubusercontent.com/WangJINGJING233/DJANGO_SPYDER/master/images/spyder.png)
 
 - 数据库建库、建表
 
@@ -63,28 +63,29 @@
   1. /
   2. /form_view
 
-  ![image-20200703121328917](C:\Users\51181\AppData\Roaming\Typora\typora-user-images\image-20200703121328917.png)
+  ![](https://raw.githubusercontent.com/WangJINGJING233/DJANGO_SPYDER/master/images/main.png)
+  ![](https://raw.githubusercontent.com/WangJINGJING233/DJANGO_SPYDER/master/images/form_view.png)
 
 - 如何获取user_id和screen_name
 
   打开网址<https://weibo.cn>，搜索我们要找的人，如"人民日报"，进入她的主页；
 
-  ![image-20200703121848990](C:\Users\51181\AppData\Roaming\Typora\typora-user-images\image-20200703121848990.png)
+  ![](https://raw.githubusercontent.com/WangJINGJING233/DJANGO_SPYDER/master/images/user_id.png)
 
 - 如何获取cookie
 
   1.用Chrome打开<https://passport.weibo.cn/signin/login>；<br>
   2.输入微博的用户名、密码，登录，如图所示：
-  ![](https://picture.cognize.me/cognize/github/weibospider/cookie1.png)
+  ![](https://raw.githubusercontent.com/WangJINGJING233/DJANGO_SPYDER/master/images/cookie1.png)
   登录成功后会跳转到<https://m.weibo.cn>;<br>
   3.按F12键打开Chrome开发者工具，在地址栏输入并跳转到<https://weibo.cn>，跳转后会显示如下类似界面:
-  ![](https://picture.cognize.me/cognize/github/weibospider/cookie2.png)
+  ![](https://raw.githubusercontent.com/WangJINGJING233/DJANGO_SPYDER/master/images/cookie2.png)
   4.依此点击Chrome开发者工具中的Network->Name中的weibo.cn->Headers->Request Headers，"Cookie:"后的值即为我们要找的cookie值，复制即可，如图所示：
-  ![](https://picture.cognize.me/cognize/github/weibospider/cookie3.png)
+  ![](https://raw.githubusercontent.com/WangJINGJING233/DJANGO_SPYDER/master/images/cookie3.png)
 
 - 获取到信息后填入，点击请求，点击查询可查询后台处理状态，如果处理完毕则跳转到生成的页面
 
-  ![image-20200703122214850](C:\Users\51181\AppData\Roaming\Typora\typora-user-images\image-20200703122214850.png)
+  ![](https://raw.githubusercontent.com/WangJINGJING233/DJANGO_SPYDER/master/images/result.png)
 
   
 
