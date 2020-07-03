@@ -16,14 +16,14 @@
         'HOST': 'localhost',
         # 数据库的端口号
         'PORT': '3306'
-    }
-}
+       }
+   }
 
   ```
 
   2. spyder.py
   
-   ```python
+      ```python
        _user_mysql_config = {
         'host': 'localhost',
         'port': 3306,
@@ -31,16 +31,16 @@
         'password': 'root',
         'database': 'db_weibo',
         'charset': 'utf8mb4'
-    }
-    _weibo_mysql_config = {
+       }
+       _weibo_mysql_config = {
         'host': 'localhost',
         'port': 3306,
         'user': 'root',
         'password': 'root',
         'database': 'db_weibo',
         'charset': 'utf8mb4'
-    }
-     ```
+      }
+      ```
 
 
 - 数据库建库、建表
