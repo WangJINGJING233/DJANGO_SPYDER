@@ -2,7 +2,7 @@
 
   1. settings.py
 
-  ![image-20200703120508270](C:\Users\51181\AppData\Roaming\Typora\typora-user-images\image-20200703120508270.png)
+  ![image-20200703120508270](https://raw.githubusercontent.com/WangJINGJING233/DJANGO_SPYDER/master/images/settings.png)
 
   2. spyder.py
 
