@@ -85,7 +85,7 @@
 
 - 获取到信息后填入，点击请求，点击查询可查询后台处理状态，如果处理完毕则跳转到生成的页面
 
-  ![](https://raw.githubusercontent.com/WangJINGJING233/DJANGO_SPYDER/master/images/result.png)
+  ![](https://raw.githubusercontent.com/WangJINGJING233/DJANGO_SPYDER/master/images/show.png)
 
   
 
