@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{user_info.screen_name}}</title>
+    <link rel="stylesheet" href="https://h5.sinaimg.cn/marvel/v1.4.5/css/card/cards.css">
+    <link rel="stylesheet" href="https://h5.sinaimg.cn/marvel/v1.4.5/css/lib/base.css">
+    <link rel="shortcut icon" type="image/x-icon" href={{ user_info.profile_image_url }} />
+    <base target="_blank"/>
+    <style>[class*=m-imghold] > a > img {
+        z-index: 0;
+        height: 100%;
+        position: absolute;
+    }</style>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">$(document).ready(function () {
+        $(".m-diy-btn").click(function () {
+            if ($(this).html().indexOf("comment") > -1) {
+                window.open("https://m.weibo.cn/status/".concat($(this).attr("referer")))
+            }
+        });
+        $(".m-imghold-square").children("img").click(function () {
+            window.open($(this).attr("src").replace("orj360", "large"))
+        });
+    });</script>
+</head>
+<body>
+
+<div id="app" class="m-container-max">
+    <div style="height:100%;">
+        <div class="profile-cover"
+             style="height:10rem; background-image:url({{ user_info.cover_image_phone }});">
+            <div class="mod-fil-img m-avatar-box"><span class="m-img-box" style="text-align:center;"><img
+                    style="width:4rem; height:4rem; margin-top:1rem;"
+                    src={{ user_info.profile_image_url }}></span></div>
+            <div class="item-list" style="text-align:center; color:#fff; line-height:1.5rem">
+                <div class="mod-fil-name m-txt-cut" style="font-size:1.125rem;"><span class="mod-fil-n"><span
+                        class="txt-shadow">{{ user_info.screen_name }}</span></span></div>
+                <div class="mod-fil-fans" style="font-size:0.75rem">
+                    <div class="txt-shadow">关注 {{ user_info.follow_count }} | 粉丝 {{ user_info.followers_count }} |
+                        微博 {{ user_info.statuses_count }}</div>
+                    <div class="txt-shadow"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% for weibo in weibo_info %}
+        <div class="card m-panel card9 weibo-member">
+            <div class="card-wrap">
+                <div class="card-main">
+                    <header class="weibo-top m-box m-avatar-box"><a class="m-img-box"><img
+                            src={{ user_info.profile_image_url }}></a>
+                        <div class="m-box-col m-box-dir m-box-center">
+                            <div class="m-text-box"><h3 class="m-text-cut">{{ user_info.screen_name }}</h3><h4
+                                    class="m-text-cut"><span
+                                    class="time">{{ weibo.created_at }}</span><span
+                                    class="from"> 来自 {{ weibo.source }} </span></h4></div>
+                        </div>
+                    </header>
+                    {% if weibo.retweet_id %}
+                        <article class="weibo-main">
+                            <div class="weibo-og">
+                                <div class="weibo-text"><span class="url-icon"/>{% autoescape off %}{{ weibo.text }}{% endautoescape %}</div>
+                                <div>
+                                    <div class="weibo-media-wraps weibo-media media-b">
+                                        <ul class="m-auto-list"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="weibo-rp">
+                                <div class="weibo-text" referer={{weibo.retweet_id}}><span><a
+                                        href="https://m.weibo.cn/u/{{weibo.rp_user_id}}">@{{ weibo.rp_screen_name }}</a>:</span><span>{% autoescape off %}{{ weibo.rp_text }}{% endautoescape %}
+{#                                        ...<a href="https://m.weibo.cn/status/{{weibo.retweet_id}}">全文</a>#}
+                                </span></div>
+                                <div>
+                                    <div class="weibo-media-wraps weibo-media media-b">
+                                        <ul class="m-auto-list">
+                                            {% for pic in weibo.rp_pics %}
+                                            <li class="m-auto-box">
+                                                <div class="m-img-box m-imghold-square"><img
+                                                        src="https://wx3.sinaimg.cn/orj360/{{ pic }}">
+                                                </div>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <footer class="m-ctrl-box m-box-center-a">
+                            <div class="m-diy-btn m-box-col m-box-center m-box-center-a"><i
+                                    class="m-font m-font-forward"></i>
+                                <h4>{{ weibo.reposts_count }}</h4></div>
+                            <span class="m-line-gradient"></span>
+                            <div class="m-diy-btn m-box-col m-box-center m-box-center-a"
+                                 referer={{ weibo.id }}><i
+                                    class="m-font m-font-comment"></i><h4>{{ weibo.comments_count }}</h4></div>
+                            <span class="m-line-gradient"></span>
+                            <div class="m-diy-btn m-box-col m-box-center m-box-center-a"><i
+                                    class="m-icon m-icon-like"></i>
+                                <h4>{{ weibo.attitudes_count }}</h4></div>
+                        </footer>
+
+
+
+                    {% else %}
+                        <article class="weibo-main">
+                            <div class="weibo-og">
+                                <div class="weibo-text">{% autoescape off %}{{ weibo.text }}{% endautoescape %}</div>
+                                <div>
+                                    <div class="weibo-media-wraps weibo-media media-b">
+                                        <ul class="m-auto-list">
+                                            {% for pic in weibo.pics%}
+                                            <li class="m-auto-box">
+                                                <div class="m-img-box m-imghold-square"><img
+                                                        src="https://wx4.sinaimg.cn/orj360/{{ pic }}">
+                                                </div>
+
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <footer class="m-ctrl-box m-box-center-a">
+                            <div class="m-diy-btn m-box-col m-box-center m-box-center-a"><i
+                                    class="m-font m-font-forward"></i>
+                                <h4>{{ weibo.reposts_count }}</h4></div>
+                            <span class="m-line-gradient"></span>
+                            <div class="m-diy-btn m-box-col m-box-center m-box-center-a" referer={{ weibo.id }}><i
+                                    class="m-font m-font-comment"></i><h4>{{ weibo.comments_count }}</h4></div>
+                            <span class="m-line-gradient"></span>
+                            <div class="m-diy-btn m-box-col m-box-center m-box-center-a"><i
+                                    class="m-icon m-icon-like"></i>
+                                <h4>{{ weibo.attitudes_count }}</h4></div>
+                        </footer>
+
+
+
+
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
+</body>
+</html>

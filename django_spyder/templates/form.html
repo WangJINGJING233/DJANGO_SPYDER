@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FORM</title>
+</head>
+<script type="text/javascript">
+    var checkSubmitFlg = false;
+
+    function checkSubmit() {
+        if (checkSubmitFlg == true) {
+            alert("后台正在处理您的请求，请勿重复提交")
+            return false;
+        }
+        checkSubmitFlg = true;
+        alert("已收到您的请求，请等待")
+        return true;
+    }
+
+    function checkIsSubmit() {
+        if (checkSubmitFlg == false) {
+            alert("请先提交")
+            return false;
+        }
+        var uid = window.frames['id_iframe'].contentWindow.document.body.innerHTML
+        if (uid) {
+            window.open("/weibo?uid=" + uid);
+        } else {
+            alert("后台正在处理，请等待")
+        }
+        return false
+    }
+
+</script>
+<style>
+    fieldset {
+        background-color: #f1f1f1;
+        border: none;
+        border-radius: 2px;
+        margin-bottom: 12px;
+        overflow: hidden;
+        padding: 0 .625em;
+    }
+
+    label {
+        cursor: pointer;
+        display: inline-block;
+        padding: 3px 6px;
+        text-align: right;
+        width: 150px;
+        vertical-align: top;
+    }
+
+    input {
+        font-size: inherit;
+    }
+</style>
+
+
+<body>
+<p></p>
+<p></p>
+<p></p>
+
+<div align="center">
+    <form action="/form_submit/" method="post" target="submit_iframe">
+        {% csrf_token %}
+        <fieldset>
+
+            <p>
+                <label for="user_id">user_id:</label>
+                <input type="text" id="user_id" name="user_id" align="left">
+            </p>
+            <p>
+                <label for="screen_name">screen_name:</label>
+                <input type="text" id="screen_name" name="screen_name" align="left">
+            </p>
+            <p>
+                <label for="user_cookie">user_cookie:</label>
+                <input type="text" id="cookie" name="cookie" align="left">
+            </p>
+            <p>
+                <input type="submit" name="submit" value="请求" onclick="checkSubmit()">
+                <input type="submit" name="search" value="查询" onclick="checkIsSubmit()">
+            </p>
+        </fieldset>
+    </form>
+    </div>
+    <iframe id="id_iframe" name="submit_iframe" style="display: none;"/>
+
+
+</body>
+</html>
